@@ -1,0 +1,728 @@
+{
+	"info": {
+		"_postman_id": "defd17eb-7927-4177-88e2-c0b0bfab5e4f",
+		"name": "IHRM登录功能",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "登录-P1",
+			"item": [
+				{
+					"name": "POST请求-登陆成功",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d3b8535e-e4a6-4d16-a571-f10ddb84bfa0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"true\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mobile\":\"13800000002\", \r\n\"password\":\"123456\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/login",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST请求-密码错误",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d3b8535e-e4a6-4d16-a571-f10ddb84bfa0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mobile\":\"13800000002\", \r\n\"password\":\"123456a\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/login",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST请求-手机号错误",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d3b8535e-e4a6-4d16-a571-f10ddb84bfa0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mobile\":\"13800000044\", \r\n\"password\":\"123456\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/login",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "登录-P2",
+			"item": [
+				{
+					"name": "POST请求-手机号为空",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fbea19cc-28e3-4c29-9355-8b0c6ea656c7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mobile\":\"\", \r\n\"password\":\"123456\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/login",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST请求-密码为空",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fbea19cc-28e3-4c29-9355-8b0c6ea656c7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mobile\":\"13800000002\", \r\n\"password\":\"\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/login",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST请求-请求参数为空",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fbea19cc-28e3-4c29-9355-8b0c6ea656c7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mobile\":\"\", \r\n\"password\":\"\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/login",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "登录-P3",
+			"item": [
+				{
+					"name": "POST请求-手机号第二位小于等于2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "26429ecd-9407-41f7-b4e9-7ef1721b11cd",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mobile\":\"11800000002\", \r\n\"password\":\"123456\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/login",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST请求-手机号为12位",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "26429ecd-9407-41f7-b4e9-7ef1721b11cd",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mobile\":\"138000000021\", \r\n\"password\":\"123456\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/login",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST请求-手机号为10位",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "26429ecd-9407-41f7-b4e9-7ef1721b11cd",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mobile\":\"1380000000\", \r\n\"password\":\"123456\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/login",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST请求-手机号为“中文”",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "26429ecd-9407-41f7-b4e9-7ef1721b11cd",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mobile\":\"啊啊啊啊啊啊啊啊啊啊啊\", \r\n\"password\":\"123456\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/login",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST请求-手机号为“字母”",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "26429ecd-9407-41f7-b4e9-7ef1721b11cd",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mobile\":\"ASDGasdf123\", \r\n\"password\":\"123456\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/login",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST请求-手机号为“符号”",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "26429ecd-9407-41f7-b4e9-7ef1721b11cd",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mobile\":\"****####@@%\", \r\n\"password\":\"123456\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/login",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST请求-密码为“中文”",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "26429ecd-9407-41f7-b4e9-7ef1721b11cd",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mobile\":\"****####@@%\", \r\n\"password\":\"啊啊啊啊啊啊\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/login",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST请求-密码为5位",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "26429ecd-9407-41f7-b4e9-7ef1721b11cd",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"false\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mobile\":\"13800000002\", \r\n\"password\":\"12345\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/login",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
